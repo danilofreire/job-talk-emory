@@ -1,0 +1,144 @@
+---
+title: Introduction to Python Functions
+subtitle: Because copy-pasting code is so last semester
+date: 2025-02-07
+date-format: "MMMM DD, YYYY"
+author:
+  - name: Danilo Freire
+    email: danilo.freire@emory.edu
+    affiliations: Emory University
+format:
+  clean-revealjs:
+    self-contained: true
+    code-overflow: wrap
+    footer: "[Python Functions](https://raw.githack.com/danilofreire/job-talk-emory/main/lecture.html)"
+    drop:
+      button: true
+      engine: pyodide
+      pyodide:
+        packages:
+          - matplotlib
+          - micropip
+          - numpy
+          - pandas
+          - seaborn
+bibliography: references.bib
+transition: slide
+transition-speed: default
+scrollable: true
+engine: jupyter
+revealjs-plugins:
+  - drop
+  - fontawesome
+  - multimodal
+editor:
+  render-on-save: true
+---
+
+# Hello, everyone! <br> Hope you're doing well today 😉 {background-color="#2d4563"}
+
+## Lecture outline
+
+:::{style="margin-top: 40px; font-size: 26px;"}
+- [Introduction: Why functions?]{.alert}
+  - Stop code repetition (DRY, organisation)
+
+- [What are Python functions?]{.alert}
+  - `def` keyword and reusable code blocks
+
+- [Function syntax]{.alert}
+  - Function anatomy: name, parameters, body, `return`, indent
+
+- [Function parameters]{.alert}
+  - Positional vs keyword arguments, default values, `*args`, and `**kwargs`
+
+- [Best practices and pitfalls]{.alert}
+  - Naming, docstrings, indent, `return` errors
+
+- [Summary and next steps]{.alert}
+  - Recap and Q\&A
+:::
+
+# Let's get started! 🚀 {background-color="#2d4563"}
+
+## Why functions?
+
+:::{style="margin-top: 40px; font-size: 27px;"}
+:::{.columns}
+:::{.column width="50%"}
+- The problem: [code repetition]{.alert} is a trap!
+  - Imagine writing _the same_ code...
+  - ... again and again and again! 😩
+
+- An example: greeting many people
+  -  See the code on the right...  Imagine doing this for 1000 names!
+-  Inefficient and [error-prone]{.alert}
+-  Harder to read and [maintain]{.alert}
+-  Code becomes long and [messy]{.alert}
+- [Maybe there's a better way to do this?]{.alert} 🤔
+:::
+
+:::{.column width="50%"}
+:::{style="text-align: center; margin-top: 20px;"}
+```python
+# Greeting people (without functions)
+# Don't do this at home!
+
+print("Nice to meet you, Alice!")
+print("Nice to meet you, Bob!")
+print("Nice to meet you, Charlie!")
+print("Nice to meet you, Danilo!")
+print("Nice to meet you, Emily!")
+print("Nice to meet you, Frank!")
+print("Nice to meet you, George!")
+
+# ... and so on for 1000 names...
+```
+:::
+:::
+:::
+:::
+
+## Yes, there is!
+### Introducing Python functions
+
+:::{style="margin-top: 40px"}
+:::{.columns}
+:::{.column width="50%"}
+:::{style="font-size: 22px;"}
+- Functions are like [mini-programs]{.alert}
+  - Self-contained blocks of code
+  - Designed to perform a [specific task]{.alert}
+
+- Think of them as ["recipes" for code:]{.alert} 🧑‍🍳
+    -  You define the steps (code inside the function)
+    -  You can "call" the function (use the recipe) whenever you need to perform that task
+
+- Why are they useful?
+    -  [Solve code repetition]{.alert} (as we saw!)
+    -  [Organise your code]{.alert} into logical blocks
+    -  They are [reusable]{.alert} -- write once, use many times
+    - [DRY principle]{.alert}: [Don't Repeat Yourself](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself) 😉
+:::
+:::
+
+:::{.column width="50%"}
+:::{style="text-align: center; margin-top: 20px; font-size: 26px;"}
+```{python}
+#| echo: true
+#| eval: true
+# Greeting people (with functions)
+# Much better!
+
+def greet(name):
+    print(f"Nice to meet you, {name}!")
+
+greet("Alice")
+greet("Bob")
+greet("Charlie")
+greet("Danilo")
+```
+:::
+:::
+:::
+:::
