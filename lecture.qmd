@@ -11,7 +11,7 @@ format:
   clean-revealjs:
     self-contained: true
     code-overflow: wrap
-    footer: "[Python Functions](https://raw.githack.com/danilofreire/job-talk-emory/main/lecture.html)"
+    footer: "[Python Functions](https://danilofreire.github.io/job-talk-emory/lecture.html)"
     drop:
       button: true
       engine: pyodide
@@ -35,7 +35,7 @@ editor:
   render-on-save: true
 ---
 
-# Hello, everyone! <br> Hope you're doing well today 😉 {background-color="#2d4563"}
+# Hello, everyone! <br> Nice to see you all! 😉 {background-color="#2d4563"}
 
 ## Lecture outline
 
@@ -73,9 +73,12 @@ editor:
 - An example: greeting many people
   -  See the code on the right...  Imagine doing this for 1000 names!
 -  Inefficient and [error-prone]{.alert}
--  Harder to read and [maintain]{.alert}
+-  [Hard to read]{.alert} and maintain
 -  Code becomes long and [messy]{.alert}
+
+:::{.fragment}
 - [Maybe there's a better way to do this?]{.alert} 🤔
+:::
 :::
 
 :::{.column width="50%"}
@@ -105,7 +108,7 @@ print("Nice to meet you, George!")
 :::{style="margin-top: 40px"}
 :::{.columns}
 :::{.column width="50%"}
-:::{style="font-size: 22px;"}
+:::{style="font-size: 21px;"}
 - Functions are like [mini-programs]{.alert}
   - Self-contained blocks of code
   - Designed to perform a [specific task]{.alert}
@@ -113,6 +116,7 @@ print("Nice to meet you, George!")
 - Think of them as ["recipes" for code:]{.alert} 🧑‍🍳
     -  You define the steps (code inside the function)
     -  You can "call" the function (use the recipe) whenever you need to perform that task
+    - `print()`, `np.mean()`, `plt.hist()` are all functions you've used before 🤓
 
 - Why are they useful?
     -  [Solve code repetition]{.alert} (as we saw!)
@@ -123,22 +127,249 @@ print("Nice to meet you, George!")
 :::
 
 :::{.column width="50%"}
-:::{style="text-align: center; margin-top: 20px; font-size: 26px;"}
+:::{style="text-align: center; margin-top: 20px; font-size: 24px;"}
 ```{python}
 #| echo: true
 #| eval: true
 # Greeting people (with functions)
 # Much better!
 
-def greet(name):
-    print(f"Nice to meet you, {name}!")
+def greet(your_name):
+    print(f"Nice to meet you, {your_name}!")
 
 greet("Alice")
 greet("Bob")
 greet("Charlie")
-greet("Danilo")
 ```
 :::
 :::
 :::
+:::
+
+## Anatomy of a Python function
+### The building blocks
+
+:::{style="margin-top: 30px; font-size: 21px;"}
+- Understanding the parts of a function is like learning grammar 🤓📚
+
+:::{style="text-align: center; margin-top: 10px;"}
+![](figures/function-anatomy.png){width=35%}
+:::
+
+:::{.incremental}
+1. [`def` keyword]{.alert}. Tells Python: "We are defining a function now"
+2. [Function Name]{.alert} (`function_name`). The name you'll use to call the function (choose it wisely!)
+3. [Parentheses `()`]{.alert}. Hold values the function will use. Can be empty `()` if no input is needed
+4. [Parameter(s) (optional)]{.alert} (`parameter`). A placeholder for the values the function will receive. Can be multiple, separated by commas
+5. [Argument(s) (optional)]{.alert} (`parameter=argument`). The actual values that will be passed to the function. 
+6. [Colon `:`]{.alert}. Indicates the function header is complete.  Don't forget it!
+7. [Function Body]{.alert}. The actual instructions the function performs. [Four spaces!]{.alert}
+8. [`return` statement (optional)]{.alert}. The value the function sends back when it's done.  If absent, function returns `None`
+:::
+:::
+
+## Let's see two examples together 🛠️
+### Hello, Alice and Bob!
+
+:::{style="margin-top: 30px; font-size: 22px;"}
+- [Function 1]{.alert}: `say_greeting(name)`
+
+```{python}
+#| echo: true
+#| eval: true
+def say_greeting(name):
+    print(f"Hello, {name}! Nice to see you.")
+```
+
+:::{style="margin-top: 10px;"}
+- [Think about it]{.alert}:
+  - What does this function do? Can you identify the parts we discussed?
+  - Does it have a `return` statement?
+  - What if we store the output in a variable, like `message_alice = say_greeting("Alice")`?
+:::
+
+:::{style="margin-top: 10px; font-size: 24px;"}
+:::{.fragment}
+```{python}
+#| echo: true
+#| eval: true
+say_greeting("Alice")
+```
+:::
+:::
+
+:::{style="margin-top: 30px; font-size: 24px;"}
+:::{.fragment}
+```{python}
+#| echo: true
+#| eval: true
+message_alice = say_greeting("Alice")
+type(message_alice)
+```
+:::
+:::
+:::
+
+## Let's see some examples together 🛠️
+### Hello, Alice and Bob!
+
+:::{style="margin-top: 30px; font-size: 22px;"}
+- And what about this one?
+
+```{python}
+#| echo: true
+#| eval: true
+def get_greeting(name, greeting_type="Hello"):
+    message = f"{greeting_type}, {name}! Nice to see you."
+    return message
+```
+
+- [Think about it]{.alert}:
+  - How is this function different from `say_greeting`?
+  - What about the `greeting_type="Hello"` part? What does it mean?
+  - What if you run: `message_bob = get_greeting("Bob")` and then `print(message)`?
+
+:::{.fragment}
+```{python}
+#| echo: true
+#| eval: true
+message_bob = get_greeting("Bob")
+```
+:::
+
+:::{.fragment}
+```{python}
+#| echo: true
+#| eval: true
+type(message_bob)
+```
+:::
+
+:::{.fragment}
+```{python}
+#| echo: true
+#| eval: true
+print(message_bob)
+```
+:::
+:::
+
+## Passing arguments to functions
+### Positional vs keyword arguments
+
+:::{style="margin-top: 30px; font-size: 22px;"}
+- We pass arguments to functions to make them [flexible]{.alert}
+- There are two ways to pass arguments:
+  - [Positional arguments]{.alert}: Order matters!
+  - [Keyword arguments]{.alert}: Order doesn't matter
+
+- Let's see an example with `get_greeting`:
+
+```{python}
+#| echo: true
+#| eval: true
+def get_greeting(name, greeting_type="Hello"):
+    message = f"{greeting_type}, {name}! Nice to see you."
+    return message
+
+message = get_greeting("Alice", "Hi")
+print(message)
+```
+
+- What happens if you switch the order of the arguments?
+
+```{python}
+#| echo: true
+#| eval: true
+message = get_greeting("Hi", "Alice")
+print(message)
+```
+:::
+
+## Keyword arguments
+
+:::{style="margin-top: 20px; font-size: 24px;"}
+- If you use [keyword arguments]{.alert}, you can pass arguments by name in any order 😉
+- This is especially useful when you have many arguments or default values, so you don't need to remember which ones come first
+
+:::{style="margin-top: 20px;"}
+```{python}
+#| echo: true
+#| eval: true
+message = get_greeting(greeting_type="Hi", name="Alice")
+print(message)
+```
+:::
+
+:::{style="margin-top: 20px;"}
+- Now it works just fine! 🎉
+
+- The same is true for many functions you use often:
+  
+```{python}
+#| echo: true
+#| eval: true
+import numpy as np
+
+vector = np.random.normal(size = 4, loc = 10, scale = 2)
+print(vector)
+```
+
+- [So far, so good?]{.alert} 🤓
+:::
+:::
+
+## Let's create a function together 🛠️ {#sec:rectangle}
+
+:::{style="margin-top: 30px; font-size: 24px;"}
+- Time to put our knowledge to the test! 🚀
+- Let's create a function that calculates the area of a rectangle
+- Complete the `calculate_area` function below:
+
+:::{style="margin-top: 10px;"}
+```python
+def calculate_area( _______ , _______ ):   # What parameters do we need?
+    # Function body - calculate the area
+    _______ = _______ * _______           # How do we calculate area? Assign to 'area' variable
+    return _______                       # What should the function return?
+```
+:::
+
+:::{style="margin-top: 10px;"}
+- Then, call the function with `length=5` and `width=4`, and print the result
+
+```python
+result = calculate_area( _______ , _______ )    # Call with arguments
+print(f"The area is: {result}")                # Check if it's correct!
+```
+:::
+
+:::{style="margin-top: 10px;"}
+- [[Click here to check your answer]{.button}](#sec:appendix01)
+:::
+:::
+
+## Another one!
+
+:::{style="margin-top: 30px; font-size: 22px;"}
+:::
+
+
+## Appendix 01: Area of a rectangle {#sec:appendix01}
+
+:::{style="margin-top: 30px; font-size: 24px;"}
+- Here's the solution to the exercise:
+
+```{python}
+#| echo: true
+#| eval: true
+def calculate_area(length, width):
+    area = length * width
+    return area
+
+result = calculate_area(5, 4)
+print(f"The area is: {result}")
+```
+
+[[Back to the function]{.button}](#sec:rectangle)
 :::

@@ -1,0 +1,18 @@
+---
+title: "Centered Code Example"
+format: html
+---
+
+<style>
+div.sourceCode {
+  display: flex;
+  justify-content: center;
+}
+</style>
+
+## Example
+
+Here is a code chunk:
+
+```python
+print("This code is centered!")
