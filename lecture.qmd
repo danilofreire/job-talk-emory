@@ -1,5 +1,5 @@
 ---
-title: Introduction to Python Functions
+title: Introduction to Custom Functions in Python
 subtitle: Because copy-pasting code is so last semester
 date: 2025-02-07
 date-format: "MMMM DD, YYYY"
@@ -39,45 +39,66 @@ editor:
 
 ## Lecture outline
 
-:::{style="margin-top: 40px; font-size: 26px;"}
-- [Introduction: Why functions?]{.alert}
-  - Stop code repetition (DRY, organisation)
+:::{style="margin-top: 40px; font-size: 21px;"}
+:::{.columns}
+:::{.column width="50%"}
+- [Why Functions?]{.alert .alert-primary}
+    - Code Repetition & DRY
 
-- [What are Python functions?]{.alert}
-  - `def` keyword and reusable code blocks
+- [What are Functions?]{.alert .alert-primary}
+    - Reusable Blocks (`def`)
 
-- [Function syntax]{.alert}
-  - Function anatomy: name, parameters, body, `return`, indent
+- [Function Syntax]{.alert .alert-primary}
+    - Anatomy & Examples
 
-- [Function parameters]{.alert}
-  - Positional vs keyword arguments, default values, `*args`, and `**kwargs`
+- [Function Arguments]{.alert .alert-primary}
+    - Positional, Keyword, Default
 
-- [Best practices and pitfalls]{.alert}
-  - Naming, docstrings, indent, `return` errors
+- [Lambda Functions]{.alert .alert-primary}
+    - Anonymous, One-liners
 
-- [Summary and next steps]{.alert}
-  - Recap and Q\&A
+- [Variable Scope]{.alert .alert-primary}
+    - Local & Global Scope
+
+- [Best Practices & Pitfalls]{.alert .alert-primary}
+    - Naming, Docstrings, Indentation, `return`
+
+- [Summary & Q\&A]{.alert .alert-primary}
+    - Recap & Next Steps
+:::
+
+:::{.column width="50%"}
+:::{style="text-align: center; margin-top: -20px;"}
+![](figures/hulk_antman_meme.png){width=80%}
+:::
+:::
+:::
 :::
 
 # Let's get started! 🚀 {background-color="#2d4563"}
+
+# Why functions? {background-color="#2d4563"}
 
 ## Why functions?
 
 :::{style="margin-top: 40px; font-size: 27px;"}
 :::{.columns}
 :::{.column width="50%"}
+:::{style="margin-top: 10px;"}
 - The problem: [code repetition]{.alert} is a trap!
   - Imagine writing _the same_ code...
   - ... again and again and again! 😩
+:::
 
+:::{style="margin-top: 10px;"}
 - An example: greeting many people
-  -  See the code on the right...  Imagine doing this for 1000 names!
--  Inefficient and [error-prone]{.alert}
--  [Hard to read]{.alert} and maintain
--  Code becomes long and [messy]{.alert}
+  -  Imagine doing this for 1000 names!
+:::
 
-:::{.fragment}
-- [Maybe there's a better way to do this?]{.alert} 🤔
+:::{style="margin-top: 10px;"}
+-  [Error-prone updates]{.alert}
+-  [Hard to read]{.alert} and maintain
+-  [Not efficient]{.alert} at all! 🐢
 :::
 :::
 
@@ -95,34 +116,40 @@ print("Nice to meet you, Emily!")
 print("Nice to meet you, Frank!")
 print("Nice to meet you, George!")
 
-# ... and so on for 1000 names...
+# ... repeats 993 more times ...
 ```
+
+:::{.fragment}
+[Maybe there's a better way to do this?]{.alert} 🤔
+:::
+
 :::
 :::
 :::
 :::
 
-## Yes, there is!
-### Introducing Python functions
+## Functions to the rescue! 🦸‍♂️
+### The best way to greet people (and much more!)
 
 :::{style="margin-top: 40px"}
 :::{.columns}
 :::{.column width="50%"}
 :::{style="font-size: 21px;"}
-- Functions are like [mini-programs]{.alert}
+- Functions are like [mini-programs]{.alert}:
   - Self-contained blocks of code
   - Designed to perform a [specific task]{.alert}
 
-- Think of them as ["recipes" for code:]{.alert} 🧑‍🍳
+- ["Recipes" for code:]{.alert} 🧑‍🍳
     -  You define the steps (code inside the function)
-    -  You can "call" the function (use the recipe) whenever you need to perform that task
-    - `print()`, `np.mean()`, `plt.hist()` are all functions you've used before 🤓
+    -  You can "call" the function (use the recipe) whenever you need it
+
+- [You know them already!]{.alert}
+  - `print()`, `type()`, `np.mean()`, `plt.hist()` are all functions you've used before! 🤓
 
 - Why are they useful?
-    -  [Solve code repetition]{.alert} (as we saw!)
-    -  [Organise your code]{.alert} into logical blocks
-    -  They are [reusable]{.alert} -- write once, use many times
-    - [DRY principle]{.alert}: [Don't Repeat Yourself](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself) 😉
+    - [Reusable code]{.alert}
+    - [Organised logic]{.alert} 
+    - [One change updates all]{.alert} 
 :::
 :::
 
@@ -140,7 +167,13 @@ def greet(your_name):
 greet("Alice")
 greet("Bob")
 greet("Charlie")
+greet("Danilo")
 ```
+
+:::{.fragment}
+[DRY principle]{.alert}: [Don't Repeat Yourself](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself) 😉
+:::
+
 :::
 :::
 :::
@@ -149,30 +182,39 @@ greet("Charlie")
 ## Anatomy of a Python function
 ### The building blocks
 
-:::{style="margin-top: 30px; font-size: 21px;"}
-- Understanding the parts of a function is like learning grammar 🤓📚
+:::{style="margin-top: 30px; font-size: 22px;"}
+- Writing a function is like writing a sentence: [it has structure]{.alert} 🤓📚
 
 :::{style="text-align: center; margin-top: 10px;"}
 ![](figures/function-anatomy.png){width=35%}
 :::
 
+:::{.columns}
+:::{.column width="50%"}
 :::{.incremental}
 1. [`def` keyword]{.alert}. Tells Python: "We are defining a function now"
-2. [Function Name]{.alert} (`function_name`). The name you'll use to call the function (choose it wisely!)
-3. [Parentheses `()`]{.alert}. Hold values the function will use. Can be empty `()` if no input is needed
+2. [Function Name]{.alert} (`function_name`). Choose a descriptive name (e.g., `greet`, `calculate_age`, etc)
+3. [Parentheses `()`]{.alert}. Enclose inputs the function needs. Empty `()` means no inputs
 4. [Parameter(s) (optional)]{.alert} (`parameter`). A placeholder for the values the function will receive. Can be multiple, separated by commas
-5. [Argument(s) (optional)]{.alert} (`parameter=argument`). The actual values that will be passed to the function. 
-6. [Colon `:`]{.alert}. Indicates the function header is complete.  Don't forget it!
-7. [Function Body]{.alert}. The actual instructions the function performs. [Four spaces!]{.alert}
-8. [`return` statement (optional)]{.alert}. The value the function sends back when it's done.  If absent, function returns `None`
 :::
 :::
 
-## Let's see two examples together 🛠️
+:::{.column width="50%"}
+:::{.incremental}
+5. [Argument(s) (optional)]{.alert} (`parameter=argument`). The actual values that will be passed to the function. 
+6. [Colon `:`]{.alert} Ends the function header.  Don't forget it!
+7. [Function Body]{.alert}. Code to execute. [After four spaces!]{.alert}
+8. [`return` statement (optional)]{.alert}. What the function sends back.  If absent, function returns `None`. [Indent it too!]{.alert}
+:::
+:::
+:::
+:::
+
+## Let's see some examples together 🛠️
 ### Hello, Alice and Bob!
 
 :::{style="margin-top: 30px; font-size: 22px;"}
-- [Function 1]{.alert}: `say_greeting(name)`
+- [Function with one parameter]{.alert}: `say_greeting(name)`
 
 ```{python}
 #| echo: true
@@ -183,7 +225,7 @@ def say_greeting(name):
 
 :::{style="margin-top: 10px;"}
 - [Think about it]{.alert}:
-  - What does this function do? Can you identify the parts we discussed?
+  - Can you identify the parts we discussed?
   - Does it have a `return` statement?
   - What if we store the output in a variable, like `message_alice = say_greeting("Alice")`?
 :::
@@ -199,13 +241,26 @@ say_greeting("Alice")
 :::
 
 :::{style="margin-top: 30px; font-size: 24px;"}
+:::{.columns}
+:::{.column width="50%"}
 :::{.fragment}
 ```{python}
 #| echo: true
 #| eval: true
 message_alice = say_greeting("Alice")
+```
+:::
+:::
+
+:::{.column width="50%"}
+:::{.fragment}
+```{python}
+#| echo: true
+#| eval: true
 type(message_alice)
 ```
+:::
+:::
 :::
 :::
 :::
@@ -224,19 +279,29 @@ def get_greeting(name, greeting_type="Hello"):
     return message
 ```
 
+:::{style="margin-top: 10px;"}
+:::
+
 - [Think about it]{.alert}:
   - How is this function different from `say_greeting`?
   - What about the `greeting_type="Hello"` part? What does it mean?
   - What if you run: `message_bob = get_greeting("Bob")` and then `print(message)`?
 
+:::{style="margin-top: 10px;"}
+:::
+
+:::{.columns}
+:::{.column width="50%"}
 :::{.fragment}
 ```{python}
 #| echo: true
 #| eval: true
+# No errors and no output!
 message_bob = get_greeting("Bob")
 ```
 :::
 
+:::{style="margin-top: 10px;"}
 :::{.fragment}
 ```{python}
 #| echo: true
@@ -244,7 +309,10 @@ message_bob = get_greeting("Bob")
 type(message_bob)
 ```
 :::
+:::
+:::
 
+:::{.column width="50%"}
 :::{.fragment}
 ```{python}
 #| echo: true
@@ -252,18 +320,34 @@ type(message_bob)
 print(message_bob)
 ```
 :::
+
+:::{style="margin-top: 10px;"}
+:::
+
+:::{.fragment}
+[We can use the result in further calculations!]{.alert}
+
+More about the return statement [here](https://realpython.com/python-return-statement/)
+:::
+:::
+:::
 :::
 
 ## Passing arguments to functions
 ### Positional vs keyword arguments
 
 :::{style="margin-top: 30px; font-size: 22px;"}
+:::{.columns}
+:::{.column width="60%"}
 - We pass arguments to functions to make them [flexible]{.alert}
-- There are two ways to pass arguments:
-  - [Positional arguments]{.alert}: Order matters!
-  - [Keyword arguments]{.alert}: Order doesn't matter
+- There are two ways to pass arguments: [positional]{.alert} and [keyword]{.alert} arguments
+- Positional arguments are passed in [the order the parameters are defined]{.alert}
+- Let's see an example:
 
-- Let's see an example with `get_greeting`:
+:::{style="margin-top: 30px;"}
+:::
+
+:::{.fragment}
 
 ```{python}
 #| echo: true
@@ -275,22 +359,37 @@ def get_greeting(name, greeting_type="Hello"):
 message = get_greeting("Alice", "Hi")
 print(message)
 ```
+:::
+:::
 
+:::{.column width="40%"}
+:::{style="text-align: center; margin-top: -10px;"}
+![Positional arguments](figures/positional.png)
+
+:::{.fragment}
 - What happens if you switch the order of the arguments?
+:::
 
+:::{.fragment}
 ```{python}
 #| echo: true
 #| eval: true
 message = get_greeting("Hi", "Alice")
 print(message)
 ```
+
+[Order matters!]{.alert} 🚨
+:::
+:::
+:::
+:::
 :::
 
 ## Keyword arguments
 
 :::{style="margin-top: 20px; font-size: 24px;"}
 - If you use [keyword arguments]{.alert}, you can pass arguments by name in any order 😉
-- This is especially useful when you have many arguments or default values, so you don't need to remember which ones come first
+- This is useful when you have [many arguments or default values]{.alert}, so you don't need to remember which ones come first
 
 :::{style="margin-top: 20px;"}
 ```{python}
@@ -311,6 +410,7 @@ print(message)
 #| eval: true
 import numpy as np
 
+# Default order: loc, scale, size. But you can use keywords!
 vector = np.random.normal(size = 4, loc = 10, scale = 2)
 print(vector)
 ```
@@ -323,37 +423,607 @@ print(vector)
 
 :::{style="margin-top: 30px; font-size: 24px;"}
 - Time to put our knowledge to the test! 🚀
-- Let's create a function that calculates the area of a rectangle
-- Complete the `calculate_area` function below:
+- Let's create a function that [calculates the area of a rectangle]{.alert}
+- Please complete the `calculate_area` function below 👇
 
-:::{style="margin-top: 10px;"}
+:::{style="margin-top: 20px;"}
 ```python
-def calculate_area( _______ , _______ ):   # What parameters do we need?
+def calculate_area(_____, _____):   # What parameters do we need?
     # Function body - calculate the area
-    _______ = _______ * _______           # How do we calculate area? Assign to 'area' variable
-    return _______                       # What should the function return?
+    ____ = _____ * _____           # How do we calculate area? Assign to 'area' variable
+    return ____                    # What should the function return?
 ```
 :::
 
-:::{style="margin-top: 10px;"}
-- Then, call the function with `length=5` and `width=4`, and print the result
+:::{style="margin-top: 20px;"}
+:::
 
+:::{.fragment}
+- Then, call the function with `length=5` and `width=4`, and print the result
+:::
+
+:::{.fragment}
 ```python
-result = calculate_area( _______ , _______ )    # Call with arguments
+result = calculate_area(length=5, width=4)    # Call with arguments
 print(f"The area is: {result}")                # Check if it's correct!
 ```
 :::
 
-:::{style="margin-top: 10px;"}
-- [[Click here to check your answer]{.button}](#sec:appendix01)
+:::{style="margin-top: 30px;"}
+- [[Click here to see the solution]{.button}](#sec:appendix01)
 :::
 :::
 
-## Another one!
+## Another one? 🤓
+### Oops, something may be wrong here!
 
 :::{style="margin-top: 30px; font-size: 22px;"}
+:::{.columns}
+:::{.column width="50%"}
+- This function is [almost]{.alert} identical to the previous one
+- It looks fine, right? Try to run it and see what happens!
+
+```{python}
+#| echo: true
+#| eval: false
+def greet_incorrect(greeting_type="Hello", name):
+    message = f"{greeting_type}, {name}!"
+    return message
+```
+
+- What's the error message? 🚨
+
+:::{style="margin-top: 20px;"}
+:::{.fragment}
+```{python}
+#| eval: false
+#| echo: true
+  Cell In[14], line 1
+    def greet_incorrect(greeting_type="Hello", name): 
+                                               ^
+SyntaxError: parameter without a default follows parameter with a default
+```
+:::
+:::
 :::
 
+:::{.column width="50%"}
+:::{.fragment}
+- [What went wrong?]{.alert}
+  - Python requires [non-default arguments first]{.alert}
+  - [Fix it]{.alert} by moving `name` before `greeting_type`
+  - I told you that [order matters]{.alert}! 😂
+:::
+
+:::{style="margin-top: 20px;"}
+:::{.fragment}
+- Let's fix it together:
+  
+```{python}
+#| echo: true
+#| eval: true
+def greet_correct(name, greeting_type="Hello"):
+    message = f"{greeting_type}, {name}!"
+    return message
+
+message = greet_correct("Alice", "Hi")
+print(message)
+```
+:::
+:::
+:::
+:::
+:::
+
+# Phew, that was a lot! {background-color="#2d4563"}
+
+# Questions? 🤔 {background-color="#2d4563"}
+
+# Lambda (anonymous) functions 🕵🏽‍♀️ {background-color="#2d4563"}
+
+## Lambda functions
+
+:::{style="margin-top: 30px; font-size: 24px;"}
+:::{.columns}
+:::{.column width="50%"}
+- Sometimes you don't need a full function definition
+- Just a simple, [one-line function is enough]{.alert}
+- ️[Lambda functions]{.alert} are perfect for this!
+  - They can have many arguments but only one expression (no `return` statement)
+  - They are also known as [anonymous functions]{.alert}, but can be assigned to a variable
+- Syntax: `lambda arguments: expression`
+  - `lambda x, y: x + y`
+:::
+
+:::{.column width="50%"}
+:::{.fragment}
+- Let's calculate `x + y + z` using a lambda function:
+- Similar to writing a regular function, but in one line!
+
+```{python}
+#| echo: true
+#| eval: true
+sum_function = lambda x, y, z: x + y + z
+
+result = sum_function(1, 2, 3)
+print(result)
+```
+:::
+
+:::{.fragment}
+- [Easy, right?]{.alert}
+- Now have a look at this 🤯
+
+```{python}
+#| echo: true
+#| eval: true
+result = (lambda x, y, z: x + y + z)(1, 2, 3)
+print(result)
+```
+:::
+:::
+:::
+:::
+
+## Try it yourself! 🛠️ {#sec:exercise02}
+### NASA needs your help! 🚀
+
+:::{style="margin-top: 30px; font-size: 26px;"}
+- [Exercise]{.alert}: Create a lambda function that calculates [travel distance]{.alert} using the formula:  
+  `distance = speed * time`
+- Use the lambda function to calculate the distance for `speed=100` and `time=2`
+- Print the result
+
+<br>
+
+- [[Click here to see the solution]{.button}](#sec:appendix02)
+:::
+
+# Great job, everyone! 🎉 {background-color="#2d4563"}
+
+# Global vs local variables 🌍 {background-color="#2d4563"}
+
+## Local variables
+### What happens inside functions stays inside functions! 🤫
+
+:::{style="margin-top: 30px; font-size: 24px;"}
+:::{.columns}
+:::{.column width="50%"}
+- Python has a concept called [variable scope]{.alert}
+- Scope means: [Where in your code can you use a variable?]{.alert} 🤔
+
+:::{style="margin-top: 10px;"}
+:::
+- First, let's understand [local variables]{.alert}:
+    - They are called local because [they are "local" to the function]{.alert}
+    - They only exist and can be used [within that function's body]{.alert}
+    - They are [not accessible from outside]{.alert} the function
+
+- Think of it like a [private workspace]{.alert .alert-primary}:
+    - But once the function finishes, that workspace (and its local variables) disappears! 
+
+:::
+
+:::{.column width="50%"}
+:::{style="font-size: 23px;"}
+:::{.fragment}
+```{python}
+#| echo: true
+#| eval: true
+def my_function():
+    # message is a local variable
+    message = "Hello from inside the function!"
+    print(message)
+
+# This works!
+my_function() 
+```
+:::
+
+:::{style="margin-top: 10px;"}
+:::
+
+:::{.fragment}
+- Try to access `message` from outside:
+
+```{python}
+#| eval: false
+#| echo: true
+print(message) # Error!
+```
+
+:::{style="margin-top: 10px;"}
+```{python}
+#| eval: false
+#| echo: true
+NameError: name 'message' is not defined
+```
+:::
+:::
+
+:::{.fragment}
+- `message` has disappeared!
+- [Is it clear why?]{.alert} 🤓
+:::
+:::
+:::
+:::
+:::
+
+## Global variables
+### The world is your oyster (but use them sparingly!) 🌍
+
+:::{style="margin-top: 30px; font-size: 24px;"}
+:::{.columns}
+:::{.column width="50%"}
+- Now, let's look at [global variables]{.alert}:
+    - Variables defined [outside of any function]{.alert} (at the top level of your code) are called [global variables]{.alert}
+    - They can be accessed from [anywhere]{.alert} in your code, including inside functions!
+
+- Think of it like [shared information]{.alert .alert-primary} for your whole program:
+    - Any part of your code can see and use global variables
+:::
+
+:::{.column width="50%"}
+:::{style="font-size: 19px;"}
+:::{.fragment}
+```{python}
+#| echo: true
+#| eval: true
+# 'global_greeting' is defined outside
+global_greeting = "Welcome!" 
+
+# Accessing global variable inside
+def greet_function(name):
+    print(global_greeting + " " + name) 
+
+greet_function("Alice") # Works fine!
+print(global_greeting)   # Works fine outside too!
+```
+:::
+
+:::{.fragment}
+- [What happens if you try to change a global variable inside a function?]{.alert}
+
+```{python}
+#| eval: true
+#| echo: true
+global_greeting = "Welcome!"
+
+def change_greeting(new_greeting):
+    global_greeting = new_greeting
+
+change_greeting("Hello!") # No error!
+print(global_greeting)    # But it doesn't change!
+```
+:::
+
+:::{.fragment}
+- [What's going on here?]{.alert}
+:::
+:::
+:::
+:::
+:::
+
+## The `global` keyword
+### When you need to change a global variable inside a function
+
+:::{style="margin-top: 30px; font-size: 24px;"}
+:::{.columns}
+:::{.column width="50%"}
+- If you want to [change a global variable inside a function]{.alert}, you need to use the `global` keyword
+- This tells Python: "Hey, I'm talking about the [global variable]{.alert} here!"
+
+- Let's see an example:
+
+```{python}
+#| echo: true
+#| eval: true
+global_greeting = "Welcome!"
+
+def change_greeting(new_greeting):
+    global global_greeting
+    global_greeting = new_greeting
+
+change_greeting("Hello!")
+print(global_greeting) # Now it works!
+```
+:::
+
+:::{.column width="50%"}
+:::{style="font-size: 24px;"}
+:::{.fragment}
+- That's why we need to be careful about using global variables inside functions
+- They can make your code [hard to understand]{.alert} and [debug]{.alert}
+- Did you notice how `global_greeting` is [not passed as an argument]{.alert} to the function?
+- And yet we can [change its value]{.alert} inside the function!
+:::
+
+:::{.fragment}
+- [So beware!]{.alert} 🚨
+- Any questions? 🤔
+:::
+:::
+:::
+:::
+:::
+
+# Best practices and pitfalls 🚧 {background-color="#2d4563"}
+
+## Best practices
+### How to write better functions
+
+:::{style="margin-top: 30px; font-size: 24px;"}
+- Python has a [style guide]{.alert} called [PEP 8]{.alert}
+- It provides [best practices]{.alert} for writing clean, readable code
+- Here are [some tips for writing better functions]{.alert}
+- Including some I have learnt the hard way (don't ask me how)! 😅
+
+:::{style="margin-top: 20px;"}
+:::
+- [Naming conventions]{.alert}:
+    - Use [descriptive names]{.alert} for functions and variables
+    - [snake_case]{.alert} for functions and variables
+    - Avoid [special characters]{.alert} and [reserved words]{.alert} (e.g., `print`, `sum`, `list`)
+
+:::{style="margin-top: 20px;"}
+:::
+- Bad: `def f(x):`, `def function1():`, `def sum():`, `def cR@zY_fUnC():` 👎
+- Good: `def calculate_area():`, `def greet_user():`, `def get_data():` 👍
+:::
+
+## Best practices
+### Use `docstrings` to document your functions! 📚
+
+:::{style="margin-top: 30px; font-size: 24px;"}
+:::{.columns}
+:::{.column width="50%"}
+- [Docstrings]{.alert} are [multi-line comments]{.alert} that describe what your function does
+- They are [enclosed in triple quotes]{.alert} (`"""` or `'''`)
+- They should include:
+    - [Function purpose]{.alert}
+    - [Parameters]{.alert} and [return values]{.alert}
+    - [Examples]{.alert} of how to use the function
+    - [Additional information]{.alert} if needed
+- They help others (and you!) understand your code
+- [Good documentation]{.alert} is a great way to ensure your code is [maintainable]{.alert}
+:::
+
+:::{.column width="50%"}
+:::{style="font-size: 23px; margin-top: 10px;"}
+```{python}
+#| echo: true
+#| eval: false
+def calculate_area(length, width):
+    """
+    Calculate the area of a rectangle.
+
+    Parameters:
+    length (int): The length of the rectangle.
+    width (int): The width of the rectangle.
+
+    Returns:
+    int: The area of the rectangle.
+    """
+    area = length * width
+    return area
+```
+
+- That's beautiful, isn't it? 😄
+:::
+:::
+:::
+:::
+
+## Pitfalls to avoid! 🚧
+### Indentation errors, missing `return`, and more!
+
+:::{style="margin-top: 30px; font-size: 22px;"}
+:::{.columns}
+:::{.column width="50%"}
+- You all know that Python is [indentation-sensitive]{.alert}
+- It's not to make your code look pretty, but to [define the structure]{.alert} of your code
+- [Incorrect indentation = `IndentationError`!]{.alert}
+  - Python will complain loudly if your indentation is wrong 😅
+
+:::{style="margin-top: 20px;"}
+:::
+:::{.fragment}
+- [Common mistake 1]{.alert}: Forgetting to indent the function body
+
+```{python}
+#| eval: false
+#| echo: true
+# No indentation!
+def my_function():
+print("Hello!")
+
+# Good code!
+def my_function():
+    print("Hello!")
+```
+:::
+:::
+
+:::{.column width="50%"}
+:::{.fragment}
+- [Common mistake 2]{.alert}: Incorrect number of spaces
+
+```{python}
+#| eval: false
+#| echo: true
+# Bad code! 2 spaces
+def my_function():
+  print("Hello!")
+
+# Good code! 4 spaces!
+def my_function():
+    print("Hello!")
+```
+:::
+
+:::{.fragment}
+- [Common mistake 3]{.alert}: Mixing spaces and tabs
+
+```{python}
+#| eval: false
+#| echo: true
+# Mixing spaces and tabs
+def my_function():
+        print("Using a tab for indent")
+    print("Using spaces")
+
+# Good code! Use spaces only!
+def my_function():
+    print("Using spaces")
+```
+:::
+:::
+:::
+:::
+
+## Pitfalls to avoid! 🚧
+### Return and print: Know the difference! 🤔
+
+:::{style="margin-top: 30px; font-size: 20px;"}
+:::{.columns}
+:::{.column width="50%"}
+- [Return]{.alert} and [print]{.alert} are not the same!
+- [Return]{.alert} sends a value back to the caller
+- [Print]{.alert} displays a value on the screen
+
+:::{style="margin-top: 20px;"}
+:::
+- [Common mistake 1]{.alert}: Using `print` instead of `return`
+
+```{python}
+#| eval: false
+#| echo: true
+def double(x):
+    print(x * 2)
+
+# Good code! Use return!
+def double(x):
+    return x * 2
+```
+:::
+
+:::{.column width="50%"}
+:::{.fragment}
+- [Common mistake 2]{.alert}: Forgetting to `return` a value when you need one
+
+```{python}
+#| eval: false
+#| echo: true
+def double(x):
+    x * 2
+
+# Good code! Don't forget to return!
+def double(x):
+    return x * 2
+```
+:::
+
+:::{.fragment}
+- [Common mistake 3]{.alert}: Using `return` inside a loop or `if` statement
+
+```{python}
+#| eval: false
+#| echo: true
+# No return statement for false?
+def is_even(number):
+    if number % 2 == 0:
+        return True
+
+# Good code! Return outside the if statement
+def is_even(number):
+    if number % 2 == 0:
+        return True
+    return False
+```
+:::
+:::
+:::
+:::
+
+# Summary 📚 {background-color="#2d4563"}
+
+## Summary
+
+:::{style="margin-top: 30px; font-size: 21px;"}
+:::{.columns}
+:::{.column width="50%"}
+- [Functions]{.alert} are like [mini-programs]{.alert} that perform a specific task
+- They help you [avoid code repetition]{.alert} and keep your code [clean]{.alert}
+
+:::{style="margin-top: 10px;"}
+:::
+- [Function anatomy]{.alert}:
+    - `def` keyword, name, parameters, body, `return`, and indentation
+    - [Positional vs keyword arguments]{.alert}
+    - [Default values]{.alert}
+
+:::{style="margin-top: 10px;"}
+:::
+- [Global vs local variables]{.alert}:
+    - Local variables are only accessible inside the function
+    - Global variables can be accessed from anywhere
+    - Use `global` keyword to change global variables inside functions
+:::
+
+:::{.column width="50%"}
+- [Best practices]{.alert}:
+    - Naming conventions
+    - Docstrings
+    - Indentation
+    - Return vs print
+
+:::{style="margin-top: 10px;"}
+:::
+
+- [Pitfalls to avoid]{.alert}:
+  - Indentation errors
+  - Missing `return` statements
+  - Global vs local variables
+  - Using `print` instead of `return`
+  - Using `return` inside loops or `if` statements
+  - Mixing spaces and tabs
+:::
+:::
+:::
+
+# But wait, there's more! 😅 {background-color="#2d4563"}
+
+## Further reading
+
+:::{style="margin-top: 30px; font-size: 24px;"}
+:::{.columns}
+:::{.column width="50%"}
+- Some readings you may find useful:
+  - [Python Functions](https://realpython.com/defining-your-own-python-function/)
+  - [Python Lambda Functions](https://realpython.com/python-lambda/)
+  - [Python Scope and the LEGB Rule](https://realpython.com/python-scope-legb-rule/)
+  - [PEP 8 - Style Guide for Python Code](https://pep8.org/)
+  - [Python Docstrings](https://realpython.com/documenting-python-code/)
+
+- Online courses:
+  - [Coursera](https://www.coursera.org/courses?query=python)
+  - [edX](https://www.edx.org/learn/python)
+  - [Udemy](https://www.udemy.com/courses/search/?q=python)
+  - [Codecademy](https://www.codecademy.com/learn/learn-python-3)
+  - [DataCamp](https://www.datacamp.com/courses/intro-to-python-for-data-science)
+:::
+
+:::{.column width="50%"}
+:::{style="text-align: center; margin-top: 20px;"}
+![](figures/python-def.webp){width=80%}
+:::
+:::
+:::
+:::
+
+# Thank you very much! 🙏 {background-color="#2d4563"}
 
 ## Appendix 01: Area of a rectangle {#sec:appendix01}
 
@@ -372,4 +1042,21 @@ print(f"The area is: {result}")
 ```
 
 [[Back to the function]{.button}](#sec:rectangle)
+:::
+
+## Appendix 02: Travel distance {#sec:appendix02}
+
+:::{style="margin-top: 30px; font-size: 24px;"}
+- Here's the solution to the exercise:
+
+```{python}
+#| echo: true
+#| eval: true
+distance_function = lambda speed, time: speed * time
+
+distance = distance_function(100, 2)
+print(f"The distance is: {distance}")
+```
+
+[[Back to the function]{.button}](#sec:exercise02)
 :::
