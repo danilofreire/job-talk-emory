@@ -166,7 +166,6 @@ def greet(your_name):
 
 greet("Alice")
 greet("Bob")
-greet("Charlie")
 greet("Danilo")
 ```
 
@@ -183,7 +182,7 @@ greet("Danilo")
 ### The building blocks
 
 :::{style="margin-top: 30px; font-size: 22px;"}
-- Writing a function is like writing a sentence: [it has structure]{.alert} 🤓📚
+- Writing a function is like writing a sentence: [it requires some structure!]{.alert} 🤓📚
 
 :::{style="text-align: center; margin-top: 10px;"}
 ![](figures/function-anatomy.png){width=35%}
@@ -671,11 +670,11 @@ NameError: name 'message' is not defined
 #| echo: true
 #| eval: true
 # 'global_greeting' is defined outside
-global_greeting = "Welcome!" 
+global_greeting = "Welcome" 
 
 # Accessing global variable inside
 def greet_function(name):
-    print(global_greeting + " " + name) 
+    print(f"{global_greeting} {name}") 
 
 greet_function("Alice") # Works fine!
 print(global_greeting)   # Works fine outside too!
@@ -688,7 +687,7 @@ print(global_greeting)   # Works fine outside too!
 ```{python}
 #| eval: true
 #| echo: true
-global_greeting = "Welcome!"
+global_greeting = "Welcome"
 
 def change_greeting(new_greeting):
     global_greeting = new_greeting
@@ -954,7 +953,7 @@ def is_even(number):
 :::{style="margin-top: 30px; font-size: 21px;"}
 :::{.columns}
 :::{.column width="50%"}
-- [Functions]{.alert} are like [mini-programs]{.alert} that perform a specific task
+- [Functions]{.alert} are [mini-programs]{.alert} that perform a specific task
 - They help you [avoid code repetition]{.alert} and keep your code [clean]{.alert}
 
 :::{style="margin-top: 10px;"}
@@ -1060,3 +1059,5 @@ print(f"The distance is: {distance}")
 
 [[Back to the function]{.button}](#sec:exercise02)
 :::
+
+# ...and we're back! 😄 {background-color="#2d4563"}
