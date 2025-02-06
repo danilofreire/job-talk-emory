@@ -1,0 +1,252 @@
+---
+title: __Small Language Models__
+date: "Spring 2026"
+lang: en-GB
+author:
+  - "Danilo Freire"
+fontfamily: libertine
+monofont: inconsolata
+monofontoptions: scaled=.95
+fontsize: 12pt
+spacing: double
+geometry:
+  - top=2cm
+  - bottom=2cm
+  - left=2cm
+  - right=2cm
+urlcolor: darkblue
+linkcolor: Mahogany
+citecolor: Mahogany
+engine: jupyter
+highlight-style: arrow
+pdf-engine: pdflatex
+format:
+    pdf:
+      template: article-template.latex
+      toc: false
+      toc-depth: 1
+      number-sections: false
+editor:
+  render-on-save: true
+---
+
+# Course Description
+
+Welcome to Small Language Models! This practical, hands-on course guides you through aligning language models for specific use cases, emphasising efficiency and local machine compatibility. We'll explore small language models (SmolLMs), instruction tuning, preference alignment, parameter-efficient fine-tuning, evaluation, vision-language models, synthetic datasets, efficient inference, and building agentic AI. The course focused on practical skills, minimal GPU requirements, and open-source tools. You'll be equipped to customise and control language models for your needs, contributing to a more efficient and democratised AI.
+
+# Learning Objectives
+
+By the end of this course, students will be able to:
+
+- Understand the advantages and use cases of small language models.
+- Master supervised fine-tuning and chat templating.
+- Implement preference alignment (DPO, ORPO).
+- Use parameter-efficient fine-tuning (LoRA, prompt tuning).
+- Evaluate language models using benchmarks and custom evaluations.
+- Adapt multimodal models for vision-language tasks.
+- Create and validate synthetic datasets.
+- Optimise models for efficient inference.
+- Apply techniques to real-world use cases.
+- Contribute to the open-source community.
+
+# Course Requirements
+
+Basic machine learning and NLP understanding is recommended. Familiarity with Python, PyTorch, and `transformers` is helpful.  Access to a machine running Python and required libraries is necessary. Minimal GPU is required; a modest GPU will speed up training.
+
+# Course Information
+
+We will meet two times per week in the Psychology Building. Please review materials before class.  Information and updates are on the GitHub repository. Please note that the syllabus may change, so check the repository and announcements regularly.
+
+# Software
+
+We'll use Python 3.11 and the Hugging Face ecosystem (`transformers`, `trl`, `datasets`). `uv` is recommended for environment management, but `pip` or `conda` are acceptable. Please install:
+
+- Python 3.11
+- PyTorch ([pytorch.org](https://pytorch.org/get-started/locally/))
+- `transformers`, `trl`, `datasets`
+- `uv` (recommended) or `pip`/`conda`
+- Jupyter Notebook or VS Code with Jupyter extension
+- (Optional) VS Code, PyCharm, etc.
+- (Optional) Hugging Face Hub account
+
+# Office Hours
+
+I am very flexible with office hours, and we can schedule an online meeting at any time that works for you. Feel free to send me a message at [danilo.freire@emory.edu](mailto:danilo.freire@emory.edu), and I will likely reply within a few hours. If you prefer, you can meet me in the afternoon at my office. My office address is in the [Psychology and Interdisciplinary Sciences Building, 36 Eagle Row, room 480](https://maps.app.goo.gl/bGHKwasQyp5MnQND6). If possible, please email me before coming to ensure that no two students book the same time slot.
+
+# Academic Integrity
+
+Upon every individual who is a part of Emory University falls the responsibility for maintaining in the life of Emory a standard of unimpeachable honour in all academic work. The [Honour Code of Emory College](http://catalog.college.emory.edu/academic/policies-regulations/honor-code.html) is based on the fundamental assumption that every loyal person of the University not only will conduct his or her own life according to the dictates of the highest honor, but will also refuse to tolerate in others action which would sully the good name of the institution. Academic misconduct is an offense generally defined as any action or inaction which is offensive to the integrity and honesty of the members of the academic community. Any suspected case of academic misconduct will be referred to the Emory Honour Council.
+
+# Artificial Intelligence
+
+AI tools (Copilot, ChatGPT, etc.) are *encouraged* for assistance, but submitted work must be your *original* understanding.  Acknowledge AI use (e.g., "AI tools (ChatGPT, Copilot) were used for code generation and debugging.").
+
+# Special Needs and Accessibility Services
+
+I am committed to providing necessary accommodations to ensure all students have an equal opportunity to succeed in this course. Students with medical or health conditions that may impact their academic performance should visit the [Department of Accessibility Services (DAS)](http://accessibility.emory.edu/) to determine eligibility for appropriate accommodations. Those who receive accommodations should provide me with an Accommodation Letter from DAS at the beginning of the semester or as soon as the accommodation is granted. Please note that DAS accommodations, such as extra time or quiet spaces, will apply only to quizzes, not assignments. This is because assignments are released in advance, allowing students to work at their own pace. Athletes and students with other commitments should also inform me of any scheduling conflicts at the beginning of the semester. I will do my best to accommodate these students, but I cannot guarantee that all requests will be granted. If you have any questions or concerns, please contact me.
+
+# English Language Learners
+
+Emory University welcomes students from around the country and the world, and the unique perspectives international and multilingual students bring enrich the campus community. To empower multilingual learners, an array of support is available including language and culture workshops and individual appointments. For more information about English Language Learning support at Emory, please contact the ELLP Specialists at <https://writingcenter.emory.edu>. No student will be penalised for their command of the English language.
+
+# Assignments and Grading Policy
+
+- **Problem Sets (50%):** 10 problem sets (coding, experiments, analysis). Individual work. Acknowledge collaborations/resources. Late submissions penalized 10%/day. Submit as `.ipynb` or `.pdf` via Canvas.
+- **Class Quizzes (20%):** 5 short, open-book quizzes. Individual assessment.
+- **Final Project (30%):** Group project (3-4 students) applying techniques to an alignment problem. Report and code repository. Guidelines provided mid-semester. Presentations in the final week.
+
+\newpage
+
+# Grading Scale
+
+\small
+
+| Grade | A       | A-      | B+      | B       | B-      | C+      | C       | C-      | D       | F    |
+|-------|---------|---------|---------|---------|---------|---------|---------|---------|---------|------|
+| Range | 93%–100%| 90%–92% | 87%–89% | 83%–86% | 80%–82% | 77%–79% | 73%–76% | 70%–72% | 60%–69% | <60% |
+
+\normalsize
+
+# Course Outline and Suggested Readings
+
+The lecture notes cover all the necessary material for the course, and the weekly suggested readings are recommended for those who want to deepen their understanding of the course topics. As mentioned above, the course outline is subject to change, and I will update the syllabus if needed. Please remember to check the course GitHub repository regularly. Lecture notes, assignments, and other materials will be posted there as the course progresses.
+
+## Module 01: Introduction to Smol Language Models and Alignment (Week 1)
+
+### Class 1: Course and Landscape Introduction
+- **Description:** Overview of the course, LLMs vs. SmolLMs, their advantages and use cases.
+- **Readings**:
+  - Aisera. (2024, December 27). [Small Language Models | SLM vs LLM Key Differences](https://aisera.com/blog/small-language-models).
+  - Hugging Face. (2024, July 16). [SmolLM - blazingly fast and remarkably powerful](https://huggingface.co/blog/smollm?s=31)
+  - Minaee, S., et al. (2024). [Large Language Models: A Survey. arXiv](https://arxiv.org/abs/2402.06196>).
+
+### Class 2: Alignment Foundations and Ethics
+- **Description:**  What is language model alignment, its importance, ethical considerations and risks.
+- **Readings:** 
+  - Bradley, R., & Saad, B. (2024). [AI Alignment vs. AI Ethical Treatment: Ten Challenges](https://globalprioritiesinstitute.org/wp-content/uploads/Bradley-and-Saad-AI-alignment-vs-AI-ethical-treatment_-Ten-challenges.pdf).
+  - Cabrio, D., et al. (2024). [Strong and Weak Alignment of LLMs with Human Values](https://www.nature.com/articles/s41598-024-70031-3). Nature Scientific Reports.
+  - Ouyang, S., Yun, H., & Zheng, X. (2024). [How AI Alignment Shapes the Risk Preferences of LLMs](http://arxiv.org/pdf/2406.01168.pdf). arXiv.  
+
+## Module 02: Instruction Tuning (Weeks 2-3)
+
+### Class 3: SFT Data Prep
+- **Description:** Introduction to Supervised Fine-tuning (SFT), preparing instruction datasets.
+- **Readings:** 
+  - Hugging Face. (2024). [Supervised Fine-tuning Trainer](https://huggingface.co/docs/trl/en/sft_trainer).
+  - Decoding Data Science. (2024, October 27). [Data Preparation for LLMs](https://decodingdatascience.com/data-preparation-for-llms/).
+  - AWS. (2025, January 6). [An Introduction to Preparing Your Own Dataset for LLM Training](https://aws.amazon.com/blogs/machine-learning/an-introduction-to-preparing-your-own-dataset-for-llm-training/).  
+
+### Class 4: SFT Training & Chat Templates
+- **Description:** Implementing SFT with `transformers`, training, and using chat templates.
+- **Readings:**
+    - Transformers Documentation: Fine-tuning for sequence-to-sequence.
+    - Hugging Face. (2024). [Supervised Fine-tuning Trainer](https://huggingface.co/docs/trl/en/sft_trainer).
+    - Hugging Face. (2024). [Chat Templates](https://huggingface.co/docs/transformers/en/chat_templating).
+    - Wang, Y., Bai, A., Peng, N., & Hsieh, C.-J. (2024). [Pretrained Large Language Models and Supervised Fine-Tuning on Instruction-Response Pairs](http://arxiv.org/pdf/2411.02688.pdf). arXiv.
+    -  SFT: Sampling-based Foundational Transformer. (2024). [SFT: Sampling-based Foundational Transformer](https://openreview.net/forum?id=m4eD6HDGGX). OpenReview.
+
+### Class 5: Advanced Instruction Tuning & Evaluation
+- **Description:**  Techniques to improve instruction following and evaluating tuned models.
+- **Readings:**
+    - Wei, J., et al. (2021). [Finetuned language models are zero-shot learners](https://arxiv.org/abs/2109.01652).
+    - Mehri, S., & Shwartz, V. (2023). [Automatic Evaluation of Generative Models with Instruction Tuning](https://aclanthology.org/2023.gem-1.4.pdf). ACL Anthology.  
+
+## Module 03: Preference Alignment (Weeks 4-5)
+
+### Class 6: Preference Alignment & RLHF Intro
+- **Description:** Need for preference alignment, introduction to RLHF, DPO/ORPO overview.
+- **Readings:**
+    - Ouyang, L., et al. (2022). [Training language models to follow instructions with human feedback](https://arxiv.org/abs/2203.02155).
+    - TRL Documentation: Intro to RL for Language Models.
+
+### Class 7: Direct Preference Optimisation (DPO)
+- **Description:** Deep dive into DPO theory and practical implementation.
+- **Readings:**
+    - Rafailov, R., et al. (2023). [Direct preference optimization: Your language model is secretly a reward model](https://arxiv.org/abs/2305.18290).
+    - TRL Documentation: DPO.
+
+### Class 8: ORPO & Technique Comparison
+- **Description:** Introduction to Odds Ratio Preference Optimisation and comparison of DPO and ORPO methods.
+- **Readings:** 
+- Towards Data Science. (2025, January 22). [Fine-tune Llama 3 with ORPO](https://towardsdatascience.com/fine-tune-llama-3-with-orpo-56cfab2f9ada).
+-  Hugging Face. (2024). [ORPO Trainer](https://huggingface.co/docs/trl/en/orpo_trainer).
+-   Hong, J., Lee, N., & Thorne, J. (2024). [ORPO: Monolithic Preference Optimization without Reference Model](https://arxiv.org/abs/2403.07691). arXiv.
+-   Mehri, S., & Shwartz, V. (2024). [Visual Question Answering Preference Alignment with ORPO](https://cs231n.stanford.edu/2024/papers/visual-question-and-answering-preference-alignment-with-orpo-and.pdf). Stanford.
+
+## Module 04: Parameter-efficient Fine-tuning (Week 6)
+
+### Class 9: Parameter-efficient Tuning & Low-Rank Adaptation 
+- **Description:** Introduction to efficient tuning and in-depth look at LoRA.
+- **Readings:**
+    - Hu, E. J., et al. (2021). [LoRA: Low-rank adaptation of large language models](https://arxiv.org/abs/2106.09685).
+    - PEFT Documentation: LoRA.
+
+### Class 10: Prompt Tuning & Advanced Methods
+- **Description:** Prompt tuning, adapter methods, and comparing efficient tuning techniques.
+- **Readings:**
+    - Lester, B., et al. (2021). [The power of scale for parameter-efficient prompt tuning](https://arxiv.org/abs/2104.08691).
+    - PEFT Documentation: Prompt Tuning, Adapters.
+
+## Module 05: Evaluation (Week 7)
+
+### Class 11: Automatic Evaluation Benchmarks
+- **Description:** Automatic evaluation benchmarks for language models and their limitations.
+- **Readings:**
+    - Papineni, K., et al. (2002). [Bleu: a method for automatic evaluation of machine translation](https://aclanthology.org/P02-1040/).
+
+### Class 12: Custom & Human Evaluation
+- **Description:** Creating custom evaluations and incorporating human evaluation methods.
+- **Readings:**
+    - Chang, K. W., et al. (2023). [Red teaming language models to reduce harms](https://arxiv.org/abs/2209.07858).
+
+## Module 06: Vision-language Models (Week 8)
+
+### Class 13: Vision-language Model Intro
+- **Description:** Extending models to multimodal inputs and overview of Vision-Language Models.
+- **Readings:**
+    - Radford, A., et al. (2021). [Learning transferable visual models from natural language supervision](https://arxiv.org/abs/2103.00020).
+    - Transformers Documentation: Vision-Language Models.
+
+### Class 14: VLM Fine-tuning & Alignment
+- **Description:** Fine-tuning and aligning VLMs for specific vision-language tasks.
+- **Readings:**
+    - Li, J., et al. (2023). [BLIP-2: Bootstrapping language-image pre-training](https://arxiv.org/abs/2301.12597).
+
+## Module 07: Synthetic Datasets (Week 9)
+
+### Class 15: The Power of Synthetic Data
+- **Description:** Advantages of synthetic data for training and generation techniques.
+- **Readings:**
+    - Brown, T. B., et al. (2020). [Language models are few-shot learners](https://arxiv.org/abs/2005.14165).
+
+### Class 16: Validating & Using Synthetic Data
+- **Description:** Methods for validating synthetic data and strategies for effective use.
+- **Readings:**
+    - Ye, Z., Chen, P., Guo, Q., Ouyang, J.,  Tao, T.,  Yan, J., & Zhao, B. (2024) [In Search of Needles in a 11M Haystack: Recurrent Memory Finds What LLMs Miss](https://arxiv.org/abs/2402.10790). *arXiv preprint arXiv:2402.14745*.
+
+## Module 08: Inference and Agents (Weeks 10-11)
+
+### Class 17: Efficient Inference Techniques
+- **Description:** Techniques for optimizing language model inference for efficiency.
+- **Readings:**
+    - Sanh, V., et al. (2019). [DistilBERT, a distilled version of BERT](https://arxiv.org/abs/1910.01108).
+    - Hugging Face Optimum Documentation.
+
+### Class 18: Building Basic Agentic AI - Part 1
+- **Description:** Introduction to agentic AI and building basic agents with SmolLMs.
+- **Readings:**
+    - Park, J. S., et al. (2023). [Generative agents: Interactive simulacra of human behavior](https://arxiv.org/abs/2304.03442).
+
+### Class 19: Building Basic Agentic AI - Part 2
+- **Description:** Applications and challenges in building agentic AI systems with SmolLMs.
+- **Readings:** 
+- Gradient Flow. (2024, May 16). [Agentic AI: Challenges and Opportunities](https://gradientflow.substack.com/p/agentic-ai-challenges-and-opportunities).
+-  Hugging Face. (2025, February 6). [Agentic RAG Stack (3/5) - Generate responses using a SmolLM](https://huggingface.co/blog/davidberenstein1957/ai-blueprint-agentic-rag-part-3-generate).
+-  Xi, L., et al. (2025). [The AI Agent Index](https://arxiv.org/html/2502.01635v1). arXiv. 
+
+## Module 09: Course Wrap-up and Advanced Topics (Week 12)
+
+### Class 20: Project Presentations & Course Review
+- **Description:** Student project presentations, course review, and discussion of future directions.
+- **Readings:**
+    - Instructor-provided summary of key papers and resources.
