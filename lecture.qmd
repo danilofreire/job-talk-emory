@@ -1365,3 +1365,48 @@ user_profile(occupation="Coder", hobby="Python", level="Beginner")
 - Inside the function, `kwargs` is a dictionary! Access arguments by key
 - [Importanrt]{.alert}: `*args` must come before `**kwargs` in the function definition
 :::
+
+## Appendix 08: Error handling {#sec:appendix08}
+
+:::{style="margin-top: 30px; font-size: 19px;"}
+:::{.columns}
+:::{.column width="60%"}
+- [Error handling]{.alert} is a way to [manage errors]{.alert} that may occur during the execution of your code
+- It helps you [handle unexpected situations]{.alert} gracefully
+- You can use `try` and `except` blocks to catch and handle errors
+-  Imagine accessing items in a list... but what if you ask for too much? 🤔
+
+```{python}
+#| echo: true
+#| eval: true
+def get_list_item_safe(my_list, index):
+    """
+    Safely gets an item from a list at a given index,
+    handling IndexError.
+    """
+    try:
+        item = my_list[index]
+        return item
+    except IndexError:
+        return "Error: Index is out of range!"
+
+my_list = ["apple", "banana", "cherry"]
+
+print(get_list_item_safe(my_list, 1))  
+print(get_list_item_safe(my_list, 5))  
+```
+:::
+
+:::{.column width="40%"}
+:::{style="font-size: 21px;"}
+-  `except IndexError:` [catches errors when the index is invalid]{.alert} for the list!
+-  Without `try...except`, your program would [crash with an `IndexError`]{.alert} if you tried to access an invalid index.
+-  Think of it as a [safety net]{.alert .alert-info} for your code!
+
+-  This is especially useful when:
+    -  Dealing with [user input]{.alert} (which might be unpredictable)
+    -  Working with [external data]{.alert} (which might have unexpected formats)
+:::
+:::
+:::
+:::
