@@ -1410,3 +1410,33 @@ print(get_list_item_safe(my_list, 5))
 :::
 :::
 :::
+
+## Appendix 09: Type checking {#sec:appendix09}
+
+:::{style="margin-top: 30px; font-size: 24px;"}
+- [Type checking]{.alert} is a way to [ensure that the arguments passed to a function are of the expected type]{.alert}
+- It helps you [catch errors early]{.alert} and [improve code readability]{.alert}
+- You can use the `isinstance()` function to check the type of an argument
+
+:::{style="margin-top: 20px;"}
+:::
+
+```{python}
+#| echo: true
+#| eval: true
+def add_numbers(a, b):
+    """
+    Adds two numbers together.
+    """
+    if not isinstance(a, (int, float)) or not isinstance(b, (int, float)):
+        raise TypeError("Both arguments must be numbers!")
+    return a + b
+```
+
+:::{style="margin-top: 20px;"}
+:::
+
+- This ensures that `a` and `b` are either integers or floats 😉
+- If not, it raises a `TypeError` with a custom error message
+- [This is a good practice]{.alert} to [avoid unexpected errors]{.alert} later on
+:::
