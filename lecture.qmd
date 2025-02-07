@@ -6,7 +6,7 @@ date-format: "MMMM DD, YYYY"
 author:
   - name: Danilo Freire
     email: danilo.freire@emory.edu
-    affiliations: Emory University
+    affiliations: "Emory University <br><br> <https://danilofreire.github.io/job-talk-emory/lecture.html>"
 format:
   clean-revealjs:
     self-contained: true
@@ -43,7 +43,7 @@ editor:
 :::{.columns}
 :::{.column width="50%"}
 - [Why Functions?]{.alert .alert-primary}
-    - Code Repetition & DRY
+    - Code Repetition & DRY principle
 
 - [What are Functions?]{.alert .alert-primary}
     - Reusable Blocks (`def`)
@@ -438,13 +438,13 @@ def calculate_area(_____, _____):   # What parameters do we need?
 :::
 
 :::{.fragment}
-- Then, call the function with `length=5` and `width=4`, and print the result
+- Done? Then, call the function with `length=5` and `width=4`, and print the result
 :::
 
 :::{.fragment}
 ```python
 result = calculate_area(length=5, width=4)    # Call with arguments
-print(f"The area is: {result}")                # Check if it's correct!
+print(result)                                # Check if it's correct!
 ```
 :::
 
@@ -568,9 +568,8 @@ print(result)
 ### NASA needs your help! 🚀
 
 :::{style="margin-top: 30px; font-size: 26px;"}
-- [Exercise]{.alert}: Create a lambda function that calculates [travel distance]{.alert} using the formula:  
-  `distance = speed * time`
-- Use the lambda function to calculate the distance for `speed=100` and `time=2`
+- [Exercise]{.alert}: Create a lambda function that calculates `travel_distance` using the formula `speed * time`
+- Use the lambda function to calculate the distance for `speed = 100` and `time = 2`
 - Print the result
 
 <br>
@@ -741,7 +740,6 @@ print(global_greeting) # Now it works!
 
 :::{.fragment}
 - [So beware!]{.alert} 🚨
-- Any questions? 🤔
 :::
 :::
 :::
@@ -754,7 +752,7 @@ print(global_greeting) # Now it works!
 ### How to write better functions
 
 :::{style="margin-top: 30px; font-size: 24px;"}
-- Python has a [style guide]{.alert} called [PEP 8]{.alert}
+- Python has a [style guide]{.alert} called [PEP 8]{.alert} ([link here](https://peps.python.org/pep-0008/))
 - It provides [best practices]{.alert} for writing clean, readable code
 - Here are [some tips for writing better functions]{.alert}
 - Including some I have learnt the hard way (don't ask me how)! 😅
@@ -763,13 +761,13 @@ print(global_greeting) # Now it works!
 :::
 - [Naming conventions]{.alert}:
     - Use [descriptive names]{.alert} for functions and variables
-    - [snake_case]{.alert} for functions and variables
-    - Avoid [special characters]{.alert} and [reserved words]{.alert} (e.g., `print`, `sum`, `list`)
+    - [snake_case]{.alert} for functions and variables ([camelCase]{.alert} is fine too)
+    - Avoid [special characters]{.alert} and [reserved words]{.alert} (e.g., `$`, `@`, `print`, `sum`, `list`)
 
 :::{style="margin-top: 20px;"}
 :::
 - Bad: `def f(x):`, `def function1():`, `def sum():`, `def cR@zY_fUnC():` 👎
-- Good: `def calculate_area():`, `def greet_user():`, `def get_data():` 👍
+- Good: `def calculate_area():`, `def greet_user():`, `def download_wbi():` 👍
 :::
 
 ## Best practices
@@ -783,7 +781,6 @@ print(global_greeting) # Now it works!
 - They should include:
     - [Function purpose]{.alert}
     - [Parameters]{.alert} and [return values]{.alert}
-    - [Examples]{.alert} of how to use the function
     - [Additional information]{.alert} if needed
 - They help others (and you!) understand your code
 - [Good documentation]{.alert} is a great way to ensure your code is [maintainable]{.alert}
@@ -925,7 +922,7 @@ def double(x):
 :::
 
 :::{.fragment}
-- [Common mistake 3]{.alert}: Using `return` inside a loop or `if` statement
+- [Common mistake 3]{.alert}: Using one `return` inside a loop or `if` statement
 
 ```{python}
 #| eval: false
@@ -1024,6 +1021,145 @@ def is_even(number):
 
 # Thank you very much! 🙏 {background-color="#2d4563"}
 
+# ...and we're back! 😄 {background-color="#2d4563"}
+
+# Current and prospective courses {background-color="#2d4563"}
+
+## QTM 151 - Introduction to Statistical Computing II
+### Data Analysis with Python and SQL
+
+:::{style="margin-top: 30px; font-size: 21px;"}
+:::{.columns}
+:::{.column width="40%"}
+- The course introduces students to data analysis with Python and SQL
+- It covers:
+  - Data manipulation with Pandas and NumPy
+  - Data visualisation with Matplotlib
+  - Writing and running functions
+  - Time series and panel data analysis
+  - Introduction to SQL for data retrieval
+  - Jupyter Notebooks and reproducible research
+
+- All materials are free and openly available
+:::
+
+:::{.column width="60%"}
+:::{style="text-align: center; margin-top: 20px;"}
+![Click on the image to see the website](figures/qtm151.png){width=80% data-modal-type="iframe" data-modal-url="https://danilofreire.github.io/qtm151/"}
+
+Course website: <https://danilofreire.github.io/qtm151/>
+:::
+:::
+:::
+:::
+
+## QTM 350 - Data Science Computing
+### Modern Data Science and Engineering
+
+:::{style="margin-top: 30px; font-size: 20px;"}
+:::{.columns}
+:::{.column width="40%"}
+- The course introduces students to modern data science and engineering, focusing on reliability, reproducibility, and robustness
+- The course covers:
+  - Command line interfaces
+  - Version control with git and GitHub (using the terminal) 
+  - Literate programming with Quarto
+  - AI-assisted programming
+  - Introduction to cloud computing
+  - Data storage and retrieval with SQL
+  - Parallel computing with Dask
+  - Containers and reproducible workflows with Docker
+  
+- All materials are also free and openly available
+:::
+
+:::{.column width="60%"}
+:::{style="text-align: center; margin-top: 20px;"}
+![Click on the image to see the website](figures/qtm350.png){width=80% data-modal-type="iframe" data-modal-url="https://danilofreire.github.io/qtm350/"}
+
+Course website: <https://danilofreire.github.io/qtm350/>
+:::
+:::
+:::
+:::
+
+## QTM 385 - Experimental Methods
+### 
+
+:::{style="margin-top: 30px; font-size: 21px;"}
+:::{.columns}
+:::{.column width="40%"}
+- QTM 385 is a course on experimental methods in the social and health sciences
+- The main topics covered are:
+  - The logic of causal inference
+  - Randomisation procedures
+  - Blocking and clustering
+  - Pre-analysis plans and registered reports
+  - Power calculations
+  - Non-compliance and attrition
+  - Survey experiments
+  - Research ethics
+  
+- As with the other courses, all materials are available online
+:::
+
+:::{.column width="60%"}
+:::{style="text-align: center; margin-top: 20px;"}
+![Click on the image to see the website](figures/qtm385.png){width=80% data-modal-type="iframe" data-modal-url="https://danilofreire.github.io/qtm385/"}
+
+Course website: <https://danilofreire.github.io/qtm385/>
+:::
+:::
+:::
+:::
+
+## Suggested Course: Small Language Models
+### How to build and fine-tune your own SLMs
+
+:::{style="margin-top: 30px; font-size: 22px;"}
+- Small Language Models are more useful than we think:
+  - Efficient: Run on local machines, minimal GPU
+  - Customisable: Tailor-made for your specific needs
+  - Controlled:  Understand and influence model behaviour
+  - Accessible: Lower cost, increased privacy
+
+- Hands-on learning with practical skills:
+    -  No complex setups, just your laptop and open-source tools
+    -  Focus on real-world applications and contributing to the community
+    - Based on the [Hugging Face ecosystem](https://huggingface.co/learn) (`transformers`, `trl`, `datasets`), [SMoLM2](https://github.com/huggingface/smol-course), and [ollama](https://ollama.com/)
+:::
+
+## Suggested Course: Small Language Models
+### How to build and fine-tune your own SLMs
+
+:::{style="margin-top: 30px; font-size: 22px;"}
+- Key topics covered:
+
+:::{style="margin-top: 10px;"}
+:::
+
+- [Instruction tuning](https://github.com/yaodongC/awesome-instruction-dataset)
+    - Continue training the model on [instruction-following datasets](https://huggingface.co/datasets?search=instruction) instead of pre-trained data
+
+- Preference alignment with [Direct Preference Optimisation (DPO)](https://arxiv.org/abs/2305.18290)
+  - Train the model to [rank responses](https://huggingface.co/datasets/Anthropic/hh-rlhf) based on human preferences
+
+- [Parameter-efficient fine-tuning](https://arxiv.org/abs/2312.12148)
+  - Tune only a [small number of parameters](https://huggingface.co/blog/peft) and freeze the rest
+
+- [Synthetic datasets](https://huggingface.co/datasets?search=synthetic) with [`distilabel`](https://distilabel.argilla.io/latest/)
+  - Generate your own datasets to create your own [instruction-following models](https://huggingface.co/datasets?search=instruction)
+
+- [Vision-language models](https://huggingface.co/blog/vlms)
+  - Train models to [understand images and text](https://distilabel.argilla.io/latest/) together
+
+- [Draft syllabus here](https://github.com/danilofreire/job-talk-emory/blob/main/syllabus.pdf)
+:::
+
+# Questions? {background-color="#2d4563"}
+
+# Thanks again! 😃 {background-color="#2d4563"}
+
 ## Appendix 01: Area of a rectangle {#sec:appendix01}
 
 :::{style="margin-top: 30px; font-size: 24px;"}
@@ -1037,7 +1173,7 @@ def calculate_area(length, width):
     return area
 
 result = calculate_area(5, 4)
-print(f"The area is: {result}")
+print(result)
 ```
 
 [[Back to the function]{.button}](#sec:rectangle)
@@ -1051,13 +1187,181 @@ print(f"The area is: {result}")
 ```{python}
 #| echo: true
 #| eval: true
-distance_function = lambda speed, time: speed * time
+travel_distance = lambda speed, time: speed * time
 
-distance = distance_function(100, 2)
+distance = travel_distance(100, 2)
+print(f"The distance is: {distance}")
+```
+
+- Or:
+
+```{python}
+#| echo: true
+#| eval: true
+distance = (lambda speed, time: speed * time)(100, 2)
 print(f"The distance is: {distance}")
 ```
 
 [[Back to the function]{.button}](#sec:exercise02)
 :::
 
-# ...and we're back! 😄 {background-color="#2d4563"}
+## Appendix 03: Nested functions {#sec:appendix03}
+
+:::{style="margin-top: 30px; font-size: 24px;"}
+:::{.columns}
+:::{.column width="50%"}
+- You can also define functions inside other functions:
+- This is called a [nested function]{.alert}
+- They work like regular functions, but are [only accessible inside the outer function]{.alert}
+:::
+
+:::{.column width="50%"}
+```{python}
+#| echo: true
+#| eval: true
+def outer_function(x):
+    def inner_function(y):
+        return x + y
+    return inner_function(5)
+```
+
+- Here we are using the [inner function]{.alert} to [add 5 to x]{.alert}
+- [Pretty cool, right?]{.alert} 🤓
+:::
+:::
+:::
+
+## Appendix 04: Functions with `for` loops {#sec:appendix04}
+
+:::{style="margin-top: 30px; font-size: 24px;"}
+- You can also use `for` loops inside functions
+- They're useful when you need to [repeat a task multiple times]{.alert}
+
+```{python}
+#| echo: true
+#| eval: true
+def sum_list(numbers):
+    """
+    Calculates the sum of numbers in a list.
+    """
+    total = 0
+    for number in numbers:
+        total += number
+    return total
+
+# Example usage:
+numbers = [1, 2, 3, 4, 5]
+result = sum_list(numbers)
+print(result)
+```
+:::
+
+## Appendix 05: LEGB rule {#sec:appendix05}
+
+:::{style="margin-top: 30px; font-size: 22px;"}
+:::{.columns}
+:::{.column width="50%"}
+- The [LEGB rule]{.alert} is a way to understand how Python looks for variables
+- It stands for:
+  - [Local]{.alert}: Variables defined inside a function
+  - [Enclosing]{.alert}: Variables in the local scope of enclosing functions
+  - [Global]{.alert}: Variables defined at the top level of a module
+  - [Built-in]{.alert}: Predefined names in Python (e.g., `print`, `len`)
+- Python will look for a variable in the [local scope]{.alert} first, then in the [enclosing functions]{.alert}, then in the [global scope]{.alert}, and finally in the [built-in scope]{.alert}
+:::
+
+:::{.column width="50%"}
+```{python}
+#| echo: true
+#| eval: true
+def outer_function():
+    x = 10
+    def inner_function():
+        y = 5
+        return x + y
+    return inner_function()
+
+print(outer_function())
+```
+
+- Here, `x` is in the [enclosing scope]{.alert} of `inner_function`, so it can access it
+:::
+:::
+:::
+
+## Appendix 06: `*args`: Packing Positional Arguments {#sec:appendix06}
+
+:::{style="margin-top: 30px; font-size: 23px;"}
+:::{.columns}
+:::{.column width="50%"}
+- Let's see something a bit more advanced! 😅
+- `*args` and `**kwargs` are great tools for writing flexible functions
+
+### `*args`:  Packing Positional Arguments
+
+- What if you want a function that accepts a [variable number of positional arguments]{.alert}?
+-  `*args` has got you covered!  It:
+    -  Collects [extra positional arguments]{.alert} into a **tuple** called `args`
+    -  Allows your function to be called with [any number of positional arguments]{.alert}
+- Think of it as: `*args` = "arguments" (with a star to make it special!)
+:::
+
+:::{.column width="50%"}
+:::{style="font-size: 18px;"}
+```{python}
+#| echo: true
+#| eval: true
+def make_pizza(*toppings): 
+    print("Making a pizza with the following toppings:")
+    for topping in toppings: 
+        print(f"- {topping}")
+
+make_pizza("pepperoni", "mushrooms")
+```
+
+:::{style="margin-top: 10px;"}
+:::
+```{python}
+#| echo: true
+#| eval: true
+make_pizza("cheese", "onions", "olives", "sausage")
+```
+
+:::{style="margin-top: 10px;"}
+:::
+```{python}
+#| echo: true
+#| eval: true
+make_pizza() # Still works!
+```
+
+:::
+:::
+:::
+:::
+
+## Appendix 07: `**kwargs`: Packing Keyword Arguments {#sec:appendix07}
+
+:::{style="margin-top: 30px; font-size: 22px;"}
+-  Similarly, `**kwargs` handles a [variable number of keyword arguments]{.alert}!
+- Collects [extra keyword arguments]{.alert} into a **dictionary** called `kwargs`
+
+```{python}
+#| echo: true
+#| eval: true
+def user_profile(**kwargs):
+    for key, value in kwargs.items():
+        print(f"{key}: {value}")
+
+user_profile(name="Alice", age=30, city="Wonderland")
+```
+
+```{python}
+#| echo: true
+#| eval: true
+user_profile(occupation="Coder", hobby="Python", level="Beginner")
+```
+
+- Inside the function, `kwargs` is a dictionary! Access arguments by key
+- [Importanrt]{.alert}: `*args` must come before `**kwargs` in the function definition
+:::
