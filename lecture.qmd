@@ -516,7 +516,7 @@ print(message)
 
 # Phew, that was a lot! {background-color="#2d4563"}
 
-# Questions? 🤔 {background-color="#2d4563"}
+# Questions? 😉 {background-color="#2d4563"}
 
 # Lambda (anonymous) functions 🕵🏽‍♀️ {background-color="#2d4563"}
 
@@ -867,12 +867,12 @@ def my_function():
 #| echo: true
 # Mixing spaces and tabs
 def my_function():
-        print("Using a tab for indent")
-    print("Using spaces")
+        print("Using 4 tabs")
+    print("Using 4 spaces")
 
 # Good code! Use spaces only!
 def my_function():
-    print("Using spaces")
+    print("Using 4 spaces")
 ```
 :::
 :::
@@ -1061,7 +1061,7 @@ Course website: <https://danilofreire.github.io/qtm151/>
 :::{.column width="40%"}
 - The course introduces students to modern data science and engineering, focusing on reliability, reproducibility, and robustness
 - The course covers:
-  - Command line interfaces
+  - Command line interface
   - Version control with git and GitHub (using the terminal) 
   - Literate programming with Quarto
   - AI-assisted programming
@@ -1116,12 +1116,15 @@ Course website: <https://danilofreire.github.io/qtm385/>
 ## Suggested Course: Small Language Models
 ### How to build and fine-tune your own SLMs
 
-:::{style="margin-top: 30px; font-size: 22px;"}
+:::{style="margin-top: 30px; font-size: 24px;"}
 - Small Language Models are more useful than we think:
   - Efficient: Run on local machines, minimal GPU
   - Customisable: Tailor-made for your specific needs
-  - Controlled:  Understand and influence model behaviour
+  - Controlled: Understand and influence model behaviour
   - Accessible: Lower cost, increased privacy
+
+:::{style="margin-top: 10px;"}
+:::
 
 - Hands-on learning with practical skills:
     -  No complex setups, just your laptop and open-source tools
@@ -1156,7 +1159,7 @@ Course website: <https://danilofreire.github.io/qtm385/>
 - [Draft syllabus here](https://github.com/danilofreire/job-talk-emory/blob/main/syllabus.pdf)
 :::
 
-# Questions? {background-color="#2d4563"}
+# Questions? 😉 {background-color="#2d4563"}
 
 # Thanks again! 😃 {background-color="#2d4563"}
 
@@ -1208,14 +1211,13 @@ print(f"The distance is: {distance}")
 ## Appendix 03: Nested functions {#sec:appendix03}
 
 :::{style="margin-top: 30px; font-size: 24px;"}
-:::{.columns}
-:::{.column width="50%"}
 - You can also define functions inside other functions:
 - This is called a [nested function]{.alert}
 - They work like regular functions, but are [only accessible inside the outer function]{.alert}
+
+:::{style="margin-top: 20px;"}
 :::
 
-:::{.column width="50%"}
 ```{python}
 #| echo: true
 #| eval: true
@@ -1227,8 +1229,6 @@ def outer_function(x):
 
 - Here we are using the [inner function]{.alert} to [add 5 to x]{.alert}
 - [Pretty cool, right?]{.alert} 🤓
-:::
-:::
 :::
 
 ## Appendix 04: Functions with `for` loops {#sec:appendix04}
@@ -1258,7 +1258,7 @@ print(result)
 
 ## Appendix 05: LEGB rule {#sec:appendix05}
 
-:::{style="margin-top: 30px; font-size: 22px;"}
+:::{style="margin-top: 30px; font-size: 24px;"}
 :::{.columns}
 :::{.column width="50%"}
 - The [LEGB rule]{.alert} is a way to understand how Python looks for variables
